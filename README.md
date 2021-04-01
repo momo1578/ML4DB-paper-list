@@ -1,42 +1,45 @@
 
-# AIDB/ML4DB (machine learning for database)
+# [Paper List] AI4DB / autonomous database / 智能数据库 / self-driving database
 Paper list for database systems with artificial intelligence (machine learning, deep learning, reinforcement learning)
 
 有关机器学习、神经网络、强化学习、自调优技术等在数据库系统中的应用的文章列表
 
+Welcome to PR! 
+
+欢迎大家补充！
+
 Table of Contents
 =================
+* [System & Tutorial](#system-and-tutorial)
+* [Data Access](#data-access)
+  * [Configuration Tuning](#configuration-tuning)
+  * [Physical Design](#physical-design)
+    * [Learned structure](#learned-structure)
+    * [LSM-tree related](#lsm-tree-related)
+    * [Index](#index)
+      * [Index Structure](#index-structure)
+      * [Index Recommendation](#index-recommendation)
+    * [Schema &amp; Partition](#schema--partition)
+* [Workload](#workload)
+* [Query Optimization](#query-optimization)
+    * [Cardinality Estimation](#cardinality-estimation)
+      * [Data-based](#data-based)
+      * [Query-based](#query-based)
+  * [Cost Estimation](#cost-estimation)
+    * [Single Query](#single-query)
+    * [Concurrent](#Concurrent)
+  * [Join Optimization](#join-optimization)
+  * [Query Plan](#query-plan)
+* [Query Execution](#query-execution)
+  * [Sort](#sort)
+  * [Join](#join)
+  * [Adaptive Query Processing](#adaptive-query-processing)
+  * [Approximate Query Processing](#Approximate-query-processing)
+  * [Sheduling](#sheduling)
+* [SQL Related](#sql-related)
 
-* [Papers\_AIDB](#papers_aidb)
-  * [System Level](#systems)
-  * [Data Access](#data-access)
-    * [Configuration Tuning](#configuration-tuning)
-    * [Physical Design](#physical-design)
-      * [Index](#index)
-        * [Index Structure](#index-structure)
-        * [Index Recommendation](#index-recommendation)
-      * [Schema &amp; Partition](#schema--partition)
-  * [Workload](#workload)
-  * [Query Optimization](#query-optimization)
-      * [Cardinality Estimation](#cardinality-estimation)
-        * [Based on data distribution](#based-on-data-distribution)
-        * [Based on bayesian network (graphical models)](#based-on-bayesian-network-(graphical-models))
-        * [Based on history workload](#based-on-history-workload)
-        * [Combining data and workload](#combining-data-and-workload)
-    * [Cost Estimation](#cost-estimation)
-      * [Single Query](#single-query)
-      * [Concurrent](#Concurrent)
-    * [Join Optimization](#join-optimization)
-    * [Query Plan](#query-plan)
-  * [Query Execution](#query-execution)
-    * [Join](#join)
-    * [Adaptive Query Processing](#adaptive-query-processing)
-    * [Approximate Query Processing](#Approximate-query-processing)
-    * [Sheduling](#sheduling)
-  * [SQL Related](#sql-related)
 
-
-## System Level
+## System and Tutorial
 * ***SageDB: A Learned Database System (CIDR 2019)***
 
 * Database Learning: Toward a Database that Becomes Smarter Every Time (SIGMOD 2017)
@@ -46,6 +49,10 @@ Table of Contents
 * Self-Driving : From General Purpose to Specialized DBMSs (Phd@PVLDB 2018)  
 
 * Active Learning for ML Enhanced Database Systems (SIGMOD 2020)
+
+* Database Meets Artificial Intelligence: A Survey (TKDE 2020)
+
+* Self-driving database systems: a conceptual approach (Distributed and Parallel Databases 2020)
 ## Data Access
 ### Configuration Tuning
 * SARD: A statistical approach for ranking database tuning parameters (ICDEW, 2008)
@@ -65,7 +72,19 @@ Table of Contents
 * Optimizing Databases by Learning Hidden Parameters of Solid State Drives (VLDB 2019)
 
 * iBTune: Individualized Buffer Tuning for Large-scale Cloud Databases (VLDB 2019)
+
+* Black or White? How to Develop an AutoTuner for Memory-based Analytics (SIGMOD 2020)
+
+* Learning Efficient Parameter Server Synchronization Policies for Distributed SGD (ICLR 2020)
+
+* Too Many Knobs to Tune? Towards Faster Database Tuning by Pre-selecting Important Knobs (HotStorage 2020)
+
+* Dynamic Configuration Tuning of Working Database Management Systems (LifeTech 2020)
 ### Physical Design
+#### Learned structure
+* Stacked Filters: Learning to Filter by Structure (VLDB 2021)
+#### LSM-tree related
+* Leaper: A Learned Prefetcher for Cache Invalidation in LSM-tree based Storage Engines （VLDB 2020）
 #### Index
 ##### Index Structure
 * Learning to hash for indexing big data - A survey (2016)
@@ -85,6 +104,28 @@ Table of Contents
 * ALEX: An Updatable Adaptive Learned Index (SIGMOD 2020)
 
 * The ML-Index: A Multidimensional, Learned Index for Point, Range, and Nearest-Neighbor Queries (EDBT 2020)
+
+* Effectively Learning Spatial Indices (VLDB 2020)
+
+* Stable Learned Bloom Filters for Data Streams (VLDB 2020)
+
+* START — Self-Tuning Adaptive Radix Tree (ICDEW 2020)
+
+* Learned Data Structures (2020)
+
+* The ML-Index: A Multidimensional, Learned Index for Point, Range, and Nearest-Neighbor Queries (EDBT 2020)
+
+* The PGM-index: a fully-dynamic compressed learned index with provable worst-case bounds (VLDB 2020)
+
+* A Tutorial on Learned Multi-dimensional Indexes (SIGSPATIAL 2020)
+
+* Benchmarking Learned Indexes (VLDB 2020)
+
+* Why Are Learned Indexes So Effective? (ICML 2020)
+
+* Tsunami: A Learned Multi-dimensional Index for Correlated Data and Skewed Workloads (VLDB 2020)
+
+* A Lazy Approach for Efficient Index Learning (2021)
 ##### Index Recommendation
 * Index Selection in a Self- Adaptive Data Base Management System （SIGMOD 1976）
 
@@ -93,6 +134,12 @@ Table of Contents
 * Self-Tuning Database Systems: A Decade of Progress (VLDB 2007)
 
 * AI Meets AI: Leveraging Query Executions to Improve Index Recommendations (SIGMOD 2019)
+
+* Automated Database Indexing using Model-free Reinforcement Learning (2020)
+
+* DRLindex: deep reinforcement learning index advisor for a cluster database (2020 Symposium on International Database Engineering & Applications)
+
+* An Index Advisor Using Deep Reinforcement Learning (CIKM 2020)
 #### Schema & Partition
 * Schism: a Workload-Driven Approach to Database Replication and Partitioning (VLDB 2010)
 
@@ -103,38 +150,63 @@ Table of Contents
 * Learning a Partitioning Advisor with Deep Reinforcement Learning (2019)
 
 * Qd-tree: Learning Data Layouts for Big Data Analytics (SIGMOD 2020)
+
+* A Genetic Optimization Physical Planner for Big Data Warehouses (2020)
 ## Workload
 * Workload Models for Autonomic Database Management Systems (International Conference on Autonomic and Autonomous Systems 2006)
 
 * Towards workload shift detection and prediction for autonomic databases (CIKM 2007)
 
 * Query-based Workload Forecasting for Self-Driving Database Management Systems (SIGMOD 2018）
+
+* Diagnosing Root Causes of Intermittent Slow Queries in Cloud Databases (VLDB 2020)
+
+* Seagull: An Infrastructure for Load Prediction and Optimized Resource Allocation (VLDB 2020)
 ## Query Optimization
 ### Cardinality Estimation
 
-#### Based on data distribution
-* Adaptive selectivity estimation using query feedback (SIGMOD 1994)
+Are We Ready For Learned Cardinality Estimation? (arXiv 2020)
 
+#### Data-based
+(kernal density model)
 * Self-Tuning, GPU-Accelerated Kernel Density Models for Multidimensional Selectivity Estimation (SIGMOD 2015)
 
 * Estimating Join Selectivities using Bandwidth-Optimized Kernel Density Models (VLDB 2017)
 
-* Multi-Attribute Selectivity Estimation Using Deep Learning (arXiv 2019)
-
+(sum-product network)
 * DeepDB: Learn from Data, not from Queries! (VLDB 2020)
 
-* Deep Unsupervised Cardinality Estimation (VLDB 2019) (Unsupervised)
+(autoregressive model)
+* Deep Unsupervised Cardinality Estimation (VLDB 2019) 
 
-#### Based on bayesian network (graphical models)
+* Multi-Attribute Selectivity Estimation Using Deep Learning (arXiv 2019)
+
+* Deep Learning Models for Selectivity Estimation of Multi-Attribute Queries (SIGMOD 2020)
+
+* NeuroCard: One Cardinality Estimator for All Tables (VLDB 2020)
+
+* Learning to Sample: Counting with Complex Queries (VLDB 2020)
+(graphical models)
 * Selectivity estimation using probabilistic models (SIGMOD 2001)
 
 * Lightweight graphical models for selectivity estimation without independence assumptions (VLDB 2011)
 
-* An Approach Based on Bayesian Networks for Query Selectivity Estimation (DASFAA 2019)
-
 * Efficiently adapting graphical models for selectivity estimation (VLDB 2013)
 
-#### Based on history workload
+* An Approach Based on Bayesian Networks for Query Selectivity Estimation (DASFAA 2019)
+
+* FLAT: Fast, Lightweight and Accurate Method for Cardinality Estimation (2020 arXiv)
+
+* Astrid: Accurate Selectivity Estimation for String Predicates using Deep Learning (VLDB 2021)
+
+* BayesCard: A Unified Bayesian Framework for Cardinality Estimation (2020)
+
+* Online Sketch-based Query Optimization (2021)
+
+* LMKG: Learned Models for Cardinality Estimation in Knowledge Graphs (2021)
+#### Query-based
+* Adaptive selectivity estimation using query feedback (SIGMOD 1994)
+
 * Selectivity Estimation in Extensible Databases -A Neural Network Approach （VLDB 1998）
 
 * Effective query size estimation using neural networks.  (Applied Intelligence 2002)
@@ -149,17 +221,6 @@ Table of Contents
 
 * Learning State Representations for Query Optimization with Deep Reinforcement Learning  (DEEM@SIGMOD2018)
 
-* Flexible Operator Embeddings via Deep Learning (arXiv 2019)
-
-* Improved Cardinality Estimation by Learning Queries Containment Rates (EDBT 2020)
-
-* NN-based Transformation of Any SQL Cardinality Estimator for Handling DISTINCT, AND, OR and NOT (2020)
-
-* QuickSel: Quick Selectivity Learning with Mixture Models (2020)
-
-* Bao: Learning to Steer Query Optimizers (2020)
-#### Combining data and workload
-
 * Learned Cardinalities: Estimating Correlated Joins with Deep Learning （CIDR2019）
 
 * Estimating Cardinalities with Deep Sketches (SIGMOD 2019)
@@ -167,6 +228,18 @@ Table of Contents
 * Selectivity estimation for range predicates using lightweight models (VLDB 2019)
 
 * (Review) An Empirical Analysis of Deep Learning for Cardinality Estimation (arXiv 2019)
+
+* Flexible Operator Embeddings via Deep Learning (arXiv 2019)
+
+* Improved Cardinality Estimation by Learning Queries Containment Rates (EDBT 2020)
+
+* NN-based Transformation of Any SQL Cardinality Estimator for Handling DISTINCT, AND, OR and NOT (2020)
+
+* QuickSel: Quick Selectivity Learning with Mixture Models (SIGMOD 2020)
+
+* Efficiently Approximating Selectivity Functions using Low Overhead Regression Models (VLDB 2020)
+
+* Flow-Loss: Learning Cardinality Estimates That Matter (arXiv 2020)
 ### Cost Estimation
 #### Single Query
 * Statistical learning techniques for costing XML queries (VLDB 2005)
@@ -186,6 +259,8 @@ Table of Contents
 * Cost Models for Big Data Query Processing: Learning, Retrofitting, and Our Findings (2020)
 
 * DBMS Fitting: Why should we learn what we already know? (CIDR 2020)
+
+* A Note On Operator-Level Query Execution Cost Modeling (2020)
 #### Concurrent
 * PQR: Predicting query execution times for autonomous workload management （ICAC 2008）
 
@@ -198,6 +273,8 @@ Table of Contents
 * Towards predicting query execution time for concurrent and dynamic database workloads (not machine learning) （VLDB 2014）
 
 * Contender: A Resource Modeling Approach for Concurrent Query Performance Prediction （EDBT 2014）
+
+* Query Performance Prediction for Concurrent Queries using Graph Embedding (VLDB 2020)
 ### Join Optimization
 * Adaptive Optimization of Very Large Join Queries (SIGMOD 2018) (Not machine learning
 
@@ -206,6 +283,9 @@ Table of Contents
 * Learning to Optimize Join Queries With Deep Reinforcement Learning (ArXiv)
 
 * Reinforcement Learning with Tree-LSTM for Join Order Selection (ICDE 2020)
+
+* Research Challenges in Deep Reinforcement Learning-based Join Query Optimization (aiDM 2020)
+
 ### Query Plan
 * Plan Selection Based on Query Clustering （VLDB 2002)
 
@@ -218,7 +298,15 @@ Table of Contents
 * Towards a Hands-Free Query Optimizer through Deep Learning （CIDR 2019)
 
 * Neo: A Learned Query Optimizer (VLDB 2019)
+
+* Bao: Learning to Steer Query Optimizers (2020)
+
+* ML-based Cross-Platform Query Optimization (ICDE 2020)
+
+* Learning-based Declarative Query Optimization (2021)
 ## Query Execution
+### Sort
+* The Case for a Learned Sorting Algorithm (SIGMOD 2020)
 ### Join
 * SkinnerDB : Regret-Bounded Query Evaluation via Reinforcement Learning (VLDB 2018)
 ### Adaptive Query Processing
@@ -230,12 +318,25 @@ Table of Contents
 ### Approximate Query Processing
 * DBEST: Revisiting approximate query processing engines with machine learning models (SIGMOD 2019)
 
+* LAQP: Learning-based Approximate Query Processing (2020)
+
+* Approximate Query Processing for Data Exploration using Deep Generative Models (ICDE 2020)
+
+* ML-AQP: Query-Driven Approximate Query Processing based on Machine Learning (2020)
+
+* Approximate Query Processing for Group-By Queries based on Conditional Generative Models (2021)
 ### Sheduling
 * Workload management for cloud databases via machine learning (ICDE 2016 WiseDB)
 
 * A learning-based service for cost and performance management of cloud databases （ICDEW 2017）(short version for WiSeDB)
 
 * WiSeDB: A Learning-based Workload Management Advisor for Cloud Databases (2016 VLDB)
+
+* Buffer Pool Aware Query Scheduling via Deep Reinforcement Learning (Computer Science 2020)
+
+* CrocodileDB: Efficient Database Execution through Intelligent Deferment (CIDT 2020)
+
+* Buffer Pool Aware Query Scheduling via Deep Reinforcement Learning (2020)
 
 (transaction 👇)
 
@@ -250,3 +351,5 @@ Table of Contents
 * SQLNet: Generating Structured Queries From Natural Language Without Reinforcement Learning （ArXiv）
 
 * Facilitating SQL Query Composition and Analysis (ArXiv 2020)
+
+* Natural language to SQL: Where are we today? (VLDB 2020）
